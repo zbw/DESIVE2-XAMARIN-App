@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.Surveys.SecondSurvey.Home"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Shell.NavBarIsVisible="False" >
+
+    <ContentPage.Content>
+
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+            <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+            <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent">
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItemView >
+                            <Grid>
+                                <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}"
+                                         VerticalOptions="CenterAndExpand">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                                </StackLayout.GestureRecognizers>
+                                                <pv:PancakeView  HeightRequest="30"
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center"
+                                                            HorizontalOptions="Start">
+                                                    <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+
+                                                </pv:PancakeView>
+                                                <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold"
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </Grid>
+                        </SwipeItemView>
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <Grid x:Name="swipeContent">
+                    <pv:PancakeView x:Name="pancake" BackgroundColor="White">
+                        <Grid>
+
+                            <Grid>
+
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                    <RowDefinition Height="9*"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid Padding="30,30,30,10" Grid.Row="0">
+                                    <Image Source="menu_black.png" HeightRequest="36" HorizontalOptions="Start">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                </Grid>
+                                <Grid Grid.Row="1" BackgroundColor="Black"/>
+
+                                <ScrollView  Grid.Row="2">
+                                    <StackLayout Orientation="Vertical" Padding="30,14,30,14" Spacing="10">
+                                        <Label TextColor="Black"  Text="Umfrage 2 von 3" FontSize="Title" FontAttributes="Bold"/>
+                                        <ContentView Padding="0" VerticalOptions="FillAndExpand">
+                                            <Image Source="SURVEY_ILLUSTRATION.png" VerticalOptions="Center" WidthRequest="250" />
+                                        </ContentView>
+                                        <Label TextColor="Black" Text="Willkommen zur zweiten Umfrage!" FontSize="Title" FontAttributes="Bold"/>
+                                        <Label TextColor="Black" Text="In dieser Umfrage erwarten Sie Fragen zu Ihrem Umgang mit Informationen und Nachrichten, zu Ihren Erfahrungen mit Informationen im Gesundheitsbereich und zu Ihrer Einstellung zur Wissenschaft. Die Umfrage hat drei Abschnitte und insgesamt 14 Fragen. Die Beantwortung aller Fragen dauert ungefähr 10 Minuten."/>
+
+
+                                        <Button Margin="0,10,0,0" Text="Umfrage beginnen" TextColor="White" BorderColor="#397baf" IsEnabled="True" Clicked="Button_Clicked"
+                                            BorderWidth="2"
+                                            CornerRadius="25"
+                                            WidthRequest="300"/>
+                                    </StackLayout>
+                                </ScrollView>
+
+                            </Grid>
+                        </Grid>
+                    </pv:PancakeView>
+                </Grid>
+            </SwipeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

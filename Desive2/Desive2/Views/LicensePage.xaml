@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.LicensePage"
+             xmlns:vm="clr-namespace:Desive2.ViewModels" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             Shell.NavBarIsVisible="False">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">White</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+
+
+
+        <Grid x:Name="swipeContent">
+            <pv:PancakeView x:Name="pancake" BackgroundColor="White">
+                <Grid BackgroundColor="White">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid Padding="30,30,30,10" Grid.Row="0">
+                        <Image Source="arrowBack.png" HeightRequest="36" HorizontalOptions="Start">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="{Binding ProfilePicture}" HeightRequest="200" HorizontalOptions="End"/>
+                    </Grid>
+                    <Grid Grid.Row="1" BackgroundColor="Black">
+
+                    </Grid>
+
+                    <ScrollView  Grid.Row="2">
+                        <StackLayout BackgroundColor="White" Orientation="Vertical" Padding="15,12,15,12" Spacing="2">
+                            <Label TextColor="Black" FontSize="22" Text="Nutzungsrechte Dritter"/>
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Google GSON
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) .NET Foundation Contributors
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    NETStandard.Library
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) .NET Foundation Contributors
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Newtonsoft.JSON
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) 2007 James Newton-King
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Plugin.AudioRecorder
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) 2017 Nate Rickard
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Plugin.FirebasePushNotification
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) 2017 Rendy Del Rosario / CrossGeeks
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            
+
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    System.Linq.Expression
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) .NET Foundation and Contributors
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    All rights reserved.
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Xam.Plugin.Media
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) 2016 James Montemagno
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Xamarin.Essentials
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) Microsoft Corporation
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    All rights reserved.
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Xamarin.Essentials.Interface
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) 2018 Ryan Davis
+
+                                </Label.Text>
+                            </Label>
+                            
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Xamarin SDK
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) .NET Foundation Contributors
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    All rights reserved.
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Xamarin.Forms.PancakeView
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) 2019 Steven Thewissen
+
+                                </Label.Text>
+                            </Label>
+                            
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+                            <Grid BackgroundColor="Black" HeightRequest="1"/>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Xamarin Component for Google Play Services Client Library
+
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black" >
+                                <Label.Text>
+                                    The MIT License (MIT)
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Copyright (c) .NET Foundation Contributors
+
+                                </Label.Text>
+                            </Label>
+
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+                                </Label.Text>
+                            </Label>
+                            <Label TextColor="Black">
+                                <Label.Text>
+                                    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+                                </Label.Text>
+                            </Label>
+
+                            
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </pv:PancakeView>
+        </Grid>
+    </Grid>
+</ContentPage>

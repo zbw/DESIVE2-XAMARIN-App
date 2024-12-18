@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.PDFUploadPage"
+             xmlns:vm="clr-namespace:Desive2.ViewModels"
+             xmlns:renderer="clr-namespace:Desive2.Models" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:PDFPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent"
+                   >
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView >
+
+                        <Grid>
+                            <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}"
+                                         VerticalOptions="CenterAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <pv:PancakeView HeightRequest="30"
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center"
+                                                            HorizontalOptions="Start">
+                                                <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+
+                                            </pv:PancakeView>
+                                            <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold"
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <Grid x:Name="swipeContent">
+                <pv:PancakeView x:Name="pancake" BackgroundColor="White">
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseSwipeGrid"/>
+                    </pv:PancakeView.GestureRecognizers>
+
+                    <Grid>
+                        <Image  Aspect="Fill" HorizontalOptions="Fill" VerticalOptions="Fill" Source="background_resized.png"/>
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="Auto"/>
+
+                            </Grid.RowDefinitions>
+
+
+                            <Grid Padding="20,20,20,10" Grid.Row="0">
+                                <Image Source="menu.png" HeightRequest="30" HorizontalOptions="Start">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OpenSettings"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            <Grid Grid.Row="1" BackgroundColor="Black">
+
+                            </Grid>
+                            <ScrollView Grid.Row="2" IsVisible="True" >
+
+                                <StackLayout  IsVisible="{Binding SlIsVisible}" Margin="10,10,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                                    <Grid Padding="0,50,0,10">
+
+                                        <Frame  x:Name="circleFrame" HasShadow="False" Padding="0" Margin="0" VerticalOptions="Center" HorizontalOptions="Center" >
+                                            <Frame.CornerRadius>
+                                                <OnPlatform x:TypeArguments="x:Single">
+                                                    <On Platform="iOS" Value="30s"/>
+                                                    <On Platform="Android" Value="30"/>
+                                                </OnPlatform>
+                                            </Frame.CornerRadius>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding PDFTapped}"/>
+                                            </Frame.GestureRecognizers>
+                                            <Grid>
+
+                                                <Image x:Name="circleImg" Source="pdf.png" HeightRequest="150" >
+
+                                                </Image>
+
+                                            </Grid>
+
+                                        </Frame>
+                                    </Grid>
+                                    <Label Text="{Binding Filename}" TextColor="Black" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10,0,0"/>
+
+
+
+                                    <Button Text="PDF hochladen"
+                                        IsVisible="{Binding IsUploadVisible}"
+                                        Command="{Binding UploadPDF}"
+                                        BorderWidth="2"
+                                        CornerRadius="25"
+                                        WidthRequest="300"
+                                            HorizontalOptions="Center"
+                                            TextColor="White"/>
+                                    <Button Text="{Binding ButtonText}"
+                                            BorderWidth="2"
+                                        CornerRadius="25"
+                                        WidthRequest="300"
+                                        IsEnabled="True"
+                                            HorizontalOptions="Center"
+                                            TextColor="White"
+                                        Command="{Binding PDFPicker}"
+                                />
+
+                                    <Label Padding="20,0,20,0" TextColor="Black" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Sie werden nach dem Hochladen die Möglichkeit haben, weitere Informationen zur PDF einzugeben (Text/Sprachnotiz)." />
+
+
+                                    <StackLayout Padding="0,20,0,20" HorizontalOptions="Center">
+                                        <Grid Background="Black" HeightRequest="1" WidthRequest="1" Padding="0,0,0,0"/>
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center"  >
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                            </Label.GestureRecognizers>
+                                            <Label.Text>Was muss ich beim Hochladen beachten?</Label.Text>
+                                        </Label>
+                                        <Grid Background="Black" HeightRequest="1" WidthRequest="1" Padding="0,0,0,0"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+
+
+                        </Grid>
+
+                    </Grid>
+                </pv:PancakeView>
+            </Grid>
+        </SwipeView>
+
+        <StackLayout IsVisible="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator  AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            IsRunning="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            Color="Orange" VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+            <Label FontSize="16" TextColor="Black" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="PDF wird hochgeladen. Dies kann etwas länger dauern. Bitte warten Sie einen Augenblick."/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

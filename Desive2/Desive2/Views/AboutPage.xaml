@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.AboutPage"
+             xmlns:vm="clr-namespace:Desive2.ViewModels" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Shell.NavBarIsVisible="False"
+              xmlns:local="clr-namespace:Desive2.CustomViews"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">White</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent"
+                   >
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView >
+                        <Grid>
+                            <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}"
+                                         VerticalOptions="CenterAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <pv:PancakeView  HeightRequest="30"
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center"
+                                                            HorizontalOptions="Start">
+                                                <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+
+                                            </pv:PancakeView>
+                                            <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold"
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+
+
+            <Grid x:Name="swipeContent">
+                <pv:PancakeView x:Name="pancake" BackgroundColor="White">
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseSwipeGrid"/>
+                    </pv:PancakeView.GestureRecognizers>
+                    <Grid>
+
+
+
+                        <Grid >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Padding="30,30,30,10" Grid.Row="0">
+                            <Image Source="menu_black.png" HeightRequest="30" HorizontalOptions="Start">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                                <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenSettings"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <Grid Grid.Row="1" BackgroundColor="Black">
+
+                        </Grid>
+                            <ScrollView Grid.Row="2">
+                                <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                                    <Label Padding="20,10,10,10" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Start" Text="Über Uns" FontSize="Title"/>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+
+
+
+
+                                        <Image Source="warum_diese_Studie_Illustration.png" VerticalOptions="Center" HeightRequest="200" />
+
+                                    </StackLayout>
+
+
+
+
+                                         <Button Margin="10,10,10,10" Text="Kontakt"
+                                                            BorderWidth="2"
+                                                            CornerRadius="25"
+                                                            WidthRequest="300"
+                                                            IsEnabled="True"
+                                                            Command="{Binding OpenContact}"
+                                                            TextColor="White" />
+
+
+
+
+
+
+                                    <Button Margin="10,10,10,10" Text="FAQ"
+                                                            BorderWidth="2"
+                                                            CornerRadius="25"
+
+                                                            IsEnabled="True"
+                                                            Command="{Binding OpenFAQ}"
+                                                            TextColor="White" />
+
+
+
+
+                                    <StackLayout  Orientation="Vertical" Padding="14,0,14,22" Spacing="10">
+
+                                        <Label TextColor="Black" HorizontalTextAlignment="Start" Text="“DESIVE²” wird von Forscher:innen der ZBW – Leibniz-Informationszentrum Wirtschaft, der Humboldt-Universität zu Berlin und Grenzenlos Digital e.V. durchgeführt." FontSize="16" Padding="0,0,0,0"/>
+                                        <Label TextColor="Black" HorizontalTextAlignment="Start" Text="Sie tragen durch Ihre Teilnahme dazu bei, dass wir ein besseres Verständnis darüber bekommen, wie Menschen mit Gesundheitsinformationen umgehen. Das hilft dabei, der Verbreitung von Falschinformationen im Gesundheitsbereich gezielter entgegenzuwirken zu können." FontSize="16" Padding="0,0,0,0"/>
+                                        <Label TextColor="Black" HorizontalTextAlignment="Start" Text="Unser Projekt wird vom Bundesministerium für Bildung und Forschung (BMBF) im Rahmen der Maßnahme “Forschung Agil – Erkennen und Bekämpfung von digitalen Desinformationskampagnen” und über einen Zeitraum von drei Jahren gefördert. Weitere Informationen finden Sie auf unserer Website oder in unseren FAQ." FontSize="16" Padding="0,0,0,0"/>
+
+
+                                    </StackLayout>
+                                    <StackLayout Padding="10,0,10,0">
+                                        <Grid VerticalOptions="EndAndExpand" Background="Black" HeightRequest="1" WidthRequest="1" Padding="0,0,0,0"/>
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center" Padding="10,0,10,0" >
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenLicenses}"/>
+                                            </Label.GestureRecognizers>
+                                            <Label.Text>Verwendete Bibliotheken</Label.Text>
+                                        </Label>
+                                        <Grid Background="Black" HeightRequest="1" WidthRequest="1" Padding="0,0,0,0"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </ScrollView>
+
+
+
+
+                    </Grid>
+                    </Grid>
+                </pv:PancakeView>
+            </Grid>
+
+
+        </SwipeView>
+    </Grid>
+</ContentPage>

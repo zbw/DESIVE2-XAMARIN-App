@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.VoiceMailPage"
+             xmlns:vm="clr-namespace:Desive2.ViewModels" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+            Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:VoiceMailViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">White</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent"
+                  >
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView >
+                        <Grid>
+                            <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}"
+                                         VerticalOptions="CenterAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <pv:PancakeView  HeightRequest="30"
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center"
+                                                            HorizontalOptions="Start">
+                                                <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+
+                                            </pv:PancakeView>
+                                            <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold"
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <Grid x:Name="swipeContent" >
+                <pv:PancakeView x:Name="pancake" BackgroundColor="White" >
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseSwipeGrid"/>
+                    </pv:PancakeView.GestureRecognizers>
+
+                    <Grid>
+                        <Image  Aspect="Fill" HorizontalOptions="Fill" VerticalOptions="Fill" Source="background_resized.png"/>
+                    <Grid IsVisible="{Binding IsGridVisible}" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid Padding="30,30,30,10" Grid.Row="0">
+                            <Image Source="menu.png" HeightRequest="30" HorizontalOptions="Start">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                                <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenSettings"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <Grid Grid.Row="1" BackgroundColor="Black">
+
+                        </Grid >
+
+                            <StackLayout  Orientation="Vertical" Padding="30,20,30,24" Spacing="10" Grid.Row="2">
+                                <Label TextColor="Black"  Text="Sprachnotiz" FontSize="Title" HorizontalTextAlignment="Start"/>
+                                <Label TextColor="Black"  FontSize="14" Text="Tippen Sie unten auf den Knopf 'Aufnehmen', um eine Sprachnotiz einsprechen zu können. Lassen Sie nichts aus, jede Information kann uns behilflich sein. Um die Aufnahme zu beenden, drücken Sie auf 'Stop'. Anschließend können Sie die Sprachnotiz mit 'Sprachnotiz Hochladen' an uns senden."  Padding="0,0,0,0"/>
+
+
+                            </StackLayout>
+
+
+                        <StackLayout Grid.Row="3" Padding="6,15,6,6" >
+                                <Label Text="{Binding RecorderTitle}" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" FontSize="22" />
+
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer  Command="{Binding StartRecording}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Image Source="aufnahmeStartButton.png" IsVisible="{Binding IsRecordingVisible}" HeightRequest="100" Margin="20" >
+
+
+                                </Image>
+                                    <Label Text="Aufnehmen" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                                </Grid>
+
+                                <StackLayout IsVisible="{Binding IsStopVisible}">
+
+
+                                    <StackLayout Orientation = "Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Label x:Name="lblMinutes" FontSize = "50" TextColor="Black" Text="{Binding Minutes}" VerticalOptions="Center"/>
+                                        <Label Text=":" FontSize = "50" TextColor="Black"/>
+                                        <Label x:Name="lblSeconds" FontSize = "50" TextColor="Black" Text="{Binding Seconds}"/>
+                                    </StackLayout>
+
+
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                        <Image  Grid.Column="0" Grid.Row="0" Source="AufnahmeAbspielenButton.png" HeightRequest="50">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding PlayAudio}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Grid.Column="1" Grid.Row="0" Source="aufnahmeStoppButton.png" IsVisible="{Binding StopVisible}" HeightRequest="50">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding StopRecording}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Grid.Column="1" Grid.Row="0" Source="loeschenButton.png" IsVisible="{Binding IsDeleteVisible}" HeightRequest="50">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DeleteVoiceMail}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image  Grid.Column="2" Grid.Row="0" Source="hochladenButton.png" HeightRequest="50">
+
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding UploadAudio}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+                                        <Label Grid.Row="1" Grid.Column="0" Text="Abspielen" TextColor="Black" HorizontalOptions="Center"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="Stop" IsVisible="{Binding StopVisible}" TextColor="Black" HorizontalOptions="Center"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="Löschen" IsVisible="{Binding IsDeleteVisible}" TextColor="Black" HorizontalOptions="Center"/>
+                                        <Label Grid.Row="1" Grid.Column="2" Text="Hochladen" TextColor="Black" HorizontalOptions="Center"/>
+                                </Grid>
+
+                                </StackLayout>
+
+                            <StackLayout Padding="0,0,0,0">
+                                    <Grid VerticalOptions="EndAndExpand" Background="Black" HeightRequest="1" WidthRequest="1" Padding="0,0,0,0"/>
+                                <Label HorizontalOptions="Center" VerticalOptions="Center" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Label.GestureRecognizers>
+                                    <Label.Text>Was sollte ich beim Hochladen beachten?</Label.Text>
+                                </Label>
+                                <Grid Background="Black" HeightRequest="1" WidthRequest="1" Padding="0,0,0,0"/>
+                            </StackLayout>
+                                <Label Padding="20,0,20,0" TextColor="Black" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Sie werden nach dem Hochladen die Möglichkeit haben, weitere Informationen zur Sprachnotiz einzugeben." />
+                            </StackLayout>
+                    </Grid>
+                    </Grid>
+                </pv:PancakeView>
+            </Grid>
+        </SwipeView>
+        <ActivityIndicator  IsVisible="{Binding IsBusy}"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            IsRunning="True"
+
+                            WidthRequest="100"
+                                HeightRequest="100"
+                            Color="Orange" VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+    </Grid>
+</ContentPage>

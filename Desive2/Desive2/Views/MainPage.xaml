@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:vm="clr-namespace:Desive2.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Desive2.Views.MainPage"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="AliceBlue" >
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+        
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+        
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent" >
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView  >
+                    
+                        <Grid>
+                            <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}" 
+                                         VerticalOptions="CenterAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <pv:PancakeView HeightRequest="30" 
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center" 
+                                                            HorizontalOptions="Start">
+
+                                                <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" 
+                                                       HorizontalOptions="Center">
+                                                    
+                                                </Image>
+                                                
+                                            </pv:PancakeView>
+                                            
+                                            <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold" 
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <Grid x:Name="swipeContent" >
+                
+                    
+                
+                <pv:PancakeView x:Name="pancake" BackgroundColor="White" >
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseSwipeGrid"/>
+                    </pv:PancakeView.GestureRecognizers>
+
+                    <Grid>
+
+                        <Image  Aspect="Fill" HorizontalOptions="Fill" VerticalOptions="Fill" Source="startseite2_bunter_hintergrund.png"/>
+                        
+                        
+                    <Grid IsVisible="{Binding AreElementsVisible}" x:Name="grid">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Padding="30,30,30,10" >
+                            
+                            <Image Source="menu.png" HeightRequest="30" HorizontalOptions="Start">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenSettings}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <Grid Grid.Row="1" BackgroundColor="Black">
+
+                        </Grid>
+                        
+                        <StackLayout Grid.Row="2" Padding="50,30">
+                            <Label Text="{Binding Name}" TextColor="White" FontSize="22" FontAttributes="Bold"/>
+                            <Label Text="Was möchten Sie tun?" TextColor="White" FontSize="20"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3" Spacing="20" Padding="50,10,0,0">
+                                <pv:PancakeView Padding="20,10" CornerRadius="20,0,20,0" BackgroundColor="White"  HeightRequest="30"
+                                            HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenDiary}"/>
+                                </pv:PancakeView.GestureRecognizers>
+                            
+                            <StackLayout Spacing="20" Orientation="Horizontal">
+                                
+                                   
+                                    <Label Text="Tagebucheinträge verfassen" TextColor="Black" FontSize="14" 
+                                           VerticalOptions="Center"/>
+                                </StackLayout>
+                            </pv:PancakeView>
+                                <pv:PancakeView Padding="20,10" CornerRadius="20,0,20,0" HeightRequest="30" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenSurvey}"/>
+                                </pv:PancakeView.GestureRecognizers>
+                                <StackLayout Spacing="20" Orientation="Horizontal">
+                                    
+                                    <Label Text="An einer Umfrage teilnehmen" TextColor="Black" FontSize="14" VerticalOptions="Center"/>
+                                        <Image Source="plus1.png" IsVisible="{Binding IsSurveyOpen}"></Image>
+                                </StackLayout>
+                            </pv:PancakeView>
+                                <pv:PancakeView Padding="20,10" CornerRadius="20,0,20,0" HeightRequest="30" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenFAQ}"/>
+                                </pv:PancakeView.GestureRecognizers>
+                                <StackLayout Spacing="20" Orientation="Horizontal">
+                                    
+                                    <Label Text="Häufig gestellte Fragen lesen" TextColor="Black" FontSize="14" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </pv:PancakeView>
+                        </StackLayout>
+                        
+                         
+
+                    </Grid>
+                    
+                    </Grid>
+                    
+                </pv:PancakeView>
+              
+            </Grid>
+        </SwipeView>
+       
+        <ActivityIndicator  AbsoluteLayout.LayoutBounds="10, 10, 10, 10" 
+                            AbsoluteLayout.LayoutFlags="All" 
+                            x:Name="activityIndicator"
+                            IsRunning="{Binding IsBusy}" 
+                            IsVisible="{Binding IsBusy}" 
+                                WidthRequest="100"
+                                HeightRequest="100"
+                            Color="Orange" VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+       
+    </Grid>
+    
+</ContentPage>

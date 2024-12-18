@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.AdditionalInfosPage"
+             xmlns:vm="clr-namespace:Desive2.ViewModels" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Shell.NavBarIsVisible="False"
+             xmlns:local="clr-namespace:Desive2.CustomViews">
+
+    <ContentPage.BindingContext>
+        <vm:AdditionalInfosViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+            <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+            <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent"
+                   >
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItemView >
+                            <Grid>
+                                <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}"
+                                         VerticalOptions="CenterAndExpand">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                                </StackLayout.GestureRecognizers>
+                                                <pv:PancakeView  HeightRequest="30"
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center"
+                                                            HorizontalOptions="Start">
+                                                    <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+
+                                                </pv:PancakeView>
+                                                <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold"
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </Grid>
+                        </SwipeItemView>
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <Grid x:Name="swipeContent">
+                    <pv:PancakeView x:Name="pancake" BackgroundColor="White" >
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CloseSwipeGrid"/>
+                        </pv:PancakeView.GestureRecognizers>
+                        <Grid IsVisible="{Binding IsGridVisible}">
+                            <Image  Aspect="Fill" HorizontalOptions="Fill" VerticalOptions="Fill" Source="Poster_Swirl_bunt.png"/>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="1" />
+                                    <RowDefinition Height="9*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Padding="30,30,30,10" Grid.Row="0">
+                                    <Image Source="menu.png" HeightRequest="30" HorizontalOptions="Start">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OpenSettings"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                                <Grid Grid.Row="1" BackgroundColor="Black">
+
+                                </Grid>
+
+                                <ScrollView  Grid.Row="2" Padding="10">
+
+                                    <StackLayout Orientation="Vertical" Padding="15,0,15,0" Spacing="5">
+                                        <Label Text="Häufig gestellte Fragen" TextColor="White" FontSize="Title"/>
+                                        <Label Padding="0,0,0,20" Text="Tippen Sie auf eine Sektion, um sich weitere Informationen anzeigen zu lassen." TextColor="White"/>
+                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                        <ScrollView>
+
+                                            <local:Accordion  Title="EINFÜHRUNG">
+
+                                                <local:Accordion.AccordionContentView>
+                                                    <StackLayout Padding="0,10,0,10">
+                                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+
+
+
+                                                        <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                            <Label.Text>
+                                                                Wir würden gern mehr über Ihre Erfahrungen und konkrete Begegnungen mit Gesundheitsinformationen in Ihrem Alltag lernen. Dafür haben Sie die Möglichkeit, Nachrichten mit uns zu teilen oder Dateien hochzuladen, die konkrete Alltagssituationen enthalten: z.B. Ein:e Freund:in teilt mit Ihnen einen Artikel über Gesundheit, Sie versenden ein Youtube-Video über Gesundheit an Ihre Familie, Sie sehen einen Beitrag auf Social Media zum Thema Gesundheit, der Ihnen nicht richtig vorkommt. Diese Alltagssituationen, in denen Sie mit Gesundheitsinformationen in Berührung kommen, können Sie so oft wie Sie möchten, mit uns teilen. Im Grunde ist die App wie ein Tagebuch: Immer wenn Ihnen etwas über den Weg läuft, von dem Sie denken, dass es für unser Projekt interessant sein könnte, können Sie die Information mit uns teilen. Dabei suchen wir nach Situationen, in denen
+                                                            </Label.Text>
+                                                        </Label>
+                                                        <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                            <Label.Text>
+                                                                &#x2022; Gesundheitsinformationen mit Ihnen geteilt wurden,
+                                                            </Label.Text>
+                                                        </Label>
+                                                        <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                            <Label.Text>
+                                                                &#x2022; Sie Gesundheitsinformationen geteilt haben, oder
+                                                            </Label.Text>
+                                                        </Label>
+                                                        <Label TextColor="White" FontSize="15" LineHeight="1.2" Text="&#x2022; Sie Gesundheitsinformationen gesehen haben, die Ihnen komisch vorkommen oder bei denen Sie unsicher sind, ob diese stimmen."/>
+
+                                                        <Label TextColor="White"
+                                                               FontSize="15"
+                                                               LineHeight="1.2"
+                                                               Padding="0,10,0,0">
+                                                            <Label.Text>
+                                                                Wir interessieren uns besonders dafür, was Sie persönlich von der geteilten Information halten, warum Sie sie weitergegeben oder auch nicht weitergegeben haben und aus welchen Gründen Sie Informationen geteilt haben. Alle Angaben, die uns helfen zu verstehen, für wie glaubwürdig und vertrauenswürdig Sie die Information halten und woran Sie diese Einschätzung festmachen, hilft uns weiter.
+                                                            </Label.Text>
+                                                        </Label>
+
+                                                        <Label TextColor="White" FontSize="15" LineHeight="1.2" Padding="0,10,0,0">
+                                                            <Label.Text>
+                                                                Zu jedem Screenshot (Bildschirmfoto) oder zu jeder Datei, den/die Sie hochladen, stellen wir Ihnen weitere Fragen, um mehr über die Situation zu erfahren, in der Sie die Information erhalten oder geteilt haben. Sie haben auch die Möglichkeit, eine Sprachnotiz aufzunehmen, um uns weiterführende Informationen mitzuteilen. Wenn Sie uns nur eine Situation schildern möchten, können Sie direkt zur Aufnahme der Sprachnotiz wechseln.
+                                                            </Label.Text>
+                                                        </Label>
+                                                    </StackLayout>
+                                                </local:Accordion.AccordionContentView>
+                                            </local:Accordion>
+                                        </ScrollView>
+                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                        <ScrollView>
+
+                                            <local:Accordion  Title="FALLBEISPIELE">
+
+                                                <local:Accordion.AccordionContentView>
+                                                    <StackLayout Padding="0,10,0,10">
+                                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                        <local:Accordion  Title="Welche Beiträge sind interessant?">
+
+                                                            <local:Accordion.AccordionContentView>
+                                                                <StackLayout Padding="0,12,0,12">
+                                                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                                    <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                                        <Label.Text>
+                                                                            Wir interessieren uns für konkret Fälle aus Ihrem Alltag, in denen Gesundheitsinformationenmit Ihnen geteilt wurden oder Sie Gesundheitsinformationen geteilt haben. Folgend finden Sie ein paar Beispielszenarien, die uns interessieren.
+                                                                        </Label.Text>
+                                                                    </Label>
+                                                                    <Label TextColor="White"
+                                                                           FontSize="15"
+                                                                           LineHeight="1.2"
+                                                                           Padding="0,10,0,0">
+                                                                        <Label.Text>
+                                                                            Wir interessieren uns besonders dafür, was Sie persönlich von der geteilten Information halten, warum Sie sie weitergegeben oder auch nicht weitergegeben haben und aus welchen Gründen Sie Informationen geteilt haben. Alle Angaben, die uns helfen zu verstehen, für wie glaubwürdig und vertrauenswürdig Sie die Information halten und woran Sie diese Einschätzung festmachen, hilft uns weiter.
+                                                                        </Label.Text>
+                                                                    </Label>
+                                                                    <Label TextColor="White"
+                                                                           FontSize="15"
+                                                                           LineHeight="1.2"
+                                                                           Padding="0,10,0,0">
+                                                                        <Label.Text>
+                                                                            Folgend finden Sie ein paar Beispielszenarien, die uns interessieren.
+                                                                        </Label.Text>
+                                                                    </Label>
+                                                                </StackLayout>
+                                                            </local:Accordion.AccordionContentView>
+
+                                                        </local:Accordion>
+
+                                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                        <local:Accordion  Title="1. Fallbeispiel: Teilen in Messenger-Diensten">
+
+                                                            <local:Accordion.AccordionContentView>
+                                                                <StackLayout Padding="0,12,0,12">
+                                                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                                    <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                                        <Label.Text>
+                                                                            Stellen Sie sich vor, ein:e Freund:in schickt Ihnen per Whatsapp einen Artikel oder einen Link zu einem Artikel, in dem es um gesundheitliche Themen geht. Sie machen einen Screenshot (Bildschirmfoto) von dieser Unterhaltung und laden diese in der App hoch. Dies könnte beispielsweise so aussehen:
+                                                                        </Label.Text>
+                                                                    </Label>
+                                                                    <Image Source="screenshot1.png" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                                </StackLayout>
+                                                            </local:Accordion.AccordionContentView>
+
+                                                        </local:Accordion>
+                                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                        <local:Accordion  Title="2. Fallbeispiel: Zeitungsartikel">
+
+                                                            <local:Accordion.AccordionContentView>
+                                                                <StackLayout Padding="0,12,0,12">
+                                                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                                    <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                                        <Label.Text>
+                                                                            Stellen Sie sich vor, Sie lesen einen Zeitungsartikel oder eine Broschüre, in der es um Gesundheitsinformationen geht. Sie denken dabei an ein Familienmitglied, welches sich auch für dieses Gesundheitsthema interessiert. Sie fotografieren den Artikel und teilen ihn per Whatsapp. Ein Screenshot von dieser Unterhaltung könnte beispielsweise so aussehen:
+                                                                        </Label.Text>
+                                                                    </Label>
+                                                                    <Image Source="screenshot2.png" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                                </StackLayout>
+                                                            </local:Accordion.AccordionContentView>
+
+                                                        </local:Accordion>
+                                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                        <local:Accordion  Title="3. Fallbeispiel: PDF-Dokument">
+
+                                                            <local:Accordion.AccordionContentView>
+                                                                <StackLayout Padding="0,12,0,12">
+                                                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                                    <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                                        <Label.Text>
+                                                                            Stellen Sie sich vor, jemand hat Ihnen ein Dokument geschickt, z.B. ein PDF, in welchem es um die Unwirksamkeit von Masken bei Corona geht. Sie denken, dass das auch für unser Projekt interessant sein könnte und möchten das Dokument mit uns teilen. Sie können die Datei in der App hochladen.
+                                                                        </Label.Text>
+                                                                    </Label>
+
+                                                                </StackLayout>
+                                                            </local:Accordion.AccordionContentView>
+
+                                                        </local:Accordion>
+                                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                        <local:Accordion  Title="4. Fallbeispiel: Beitrag in Sozialen Medien">
+
+                                                            <local:Accordion.AccordionContentView>
+                                                                <StackLayout Padding="0,12,0,12">
+                                                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                                                    <Label TextColor="White" FontSize="15" LineHeight="1.2">
+                                                                        <Label.Text>
+                                                                            In den sozialen Medien, die Sie nutzen, haben Sie Gesundheitsinformationen gesehen. Diese ist für Sie relevant oder sie ist Ihnen aus anderen Gründen aufgefallen. Sie können einen Screenshot von diesem Beitrag aus sozialen Medien machen. Hier ist ein Beispiel aus Instagram:
+                                                                        </Label.Text>
+                                                                    </Label>
+                                                                    <Image Source="screenshot3.png" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                                </StackLayout>
+                                                            </local:Accordion.AccordionContentView>
+
+                                                        </local:Accordion>
+                                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+
+                                                    </StackLayout>
+                                                </local:Accordion.AccordionContentView>
+                                            </local:Accordion>
+                                        </ScrollView>
+                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                        <ScrollView>
+
+                                            <local:Accordion  Title="FAQ">
+
+                                                <local:Accordion.AccordionContentView>
+                                                    <StackLayout Padding="0,10,0,10">
+
+                                                        <Button Margin="10,10,10,10" Text="FAQ-Sammlung auf unserer Website"
+                                                            BorderWidth="2"
+                                                            CornerRadius="25"
+
+                                                            IsEnabled="True"
+                                                            Command="{Binding OpenFAQ}"
+                                                            TextColor="White" />
+                                                    </StackLayout>
+                                                </local:Accordion.AccordionContentView>
+                                            </local:Accordion>
+                                        </ScrollView>
+                                        <Grid BackgroundColor="Black" HeightRequest="1"/>
+
+
+
+                                    </StackLayout>
+                                </ScrollView>
+                            </Grid>
+                        </Grid>
+                    </pv:PancakeView>
+                </Grid>
+            </SwipeView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

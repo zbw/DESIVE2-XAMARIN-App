@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "331540836326",
+    "project_id": "desive2-28e98",
+    "storage_bucket": "desive2-28e98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331540836326:android:e2461b05bfaf126a21f027",
+        "android_client_info": {
+          "package_name": "de.zbw.desive2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331540836326-lnas8sagika9b2pro0pbh26jkneot84p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEsbLN3z6M_fI9LCQPJxrRRWQYDfPFWs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331540836326-lnas8sagika9b2pro0pbh26jkneot84p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

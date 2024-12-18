@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:Desive2.ViewModels"
+             x:Class="Desive2.Views.FAQView"
+             xmlns:local="clr-namespace:Desive2.CustomViews"
+             xmlns:loc="clr-namespace:Desive2"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:FAQPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">White</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent"
+                   >
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView >
+                        <Grid>
+                            <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}"
+                                         VerticalOptions="CenterAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <pv:PancakeView  HeightRequest="30"
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center"
+                                                            HorizontalOptions="Start">
+                                                <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+
+                                            </pv:PancakeView>
+                                            <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold"
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+
+
+            <Grid x:Name="swipeContent">
+                <pv:PancakeView x:Name="pancake" BackgroundColor="White">
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseSwipeGrid"/>
+                    </pv:PancakeView.GestureRecognizers>
+
+                    <Grid IsVisible="{Binding IsGridVisible}">
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Padding="30,30,30,10" Grid.Row="0">
+                                <Image Source="menu.png" HeightRequest="30" HorizontalOptions="Start">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OpenSettings"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            <Grid Grid.Row="1" BackgroundColor="Black"/>
+
+                            <StackLayout Grid.Row="2">
+                                <StackLayout Padding="10">
+                                    <Label TextColor="Black" Text="Tippen Sie auf eine Frage, um sich die Antwort anzeigen zu lassen" FontSize="24"/>
+                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+
+                                    <ScrollView>
+
+                                    <local:Accordion  Title="Was sollte der Screenshot (Bildschirmfoto) enthalten?">
+
+                                    <local:Accordion.AccordionContentView>
+                                        <StackLayout>
+                                            <Label FontSize="16" Text="Wenn Sie uns Screenshots von Unterhaltungen senden, reicht es, wenn der Link zu sehen ist. Chatverläufe um den geteilten Link herum brauchen wir nicht. Um die Situation einzuordnen, bekommen Sie nach dem Hochladen des Bildes Fragen von uns. Sollten Sie Screenshots mit Namen von Personen hochladen, so werden diese von uns anonymisiert, bevor Sie ausgewertet werden" TextColor="Black"/>
+
+                                        </StackLayout>
+                                    </local:Accordion.AccordionContentView>
+                                </local:Accordion>
+                                    </ScrollView>
+                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                    <ScrollView>
+
+                                    <local:Accordion  Title="Was ist mit Namen von Personen, wenn ich Chatverläufe teile?">
+
+                                    <local:Accordion.AccordionContentView>
+                                        <StackLayout>
+                                            <Label FontSize="16" Text="Sie brauchen keine Chatverläufe mit uns zu teilen oder persönliche Informationen. Wir sind nur an den Links zu Artikeln, Videos, Nachrichtenseiten etc. interessiert, die entweder von Ihnen geteilt wurden oder die Sie geteilt haben. Sollten Sie Screenshots mit Namen von Personen hochladen, so werden diese von uns anonymisiert, bevor Sie ausgewertet werden." TextColor="Black"/>
+
+                                        </StackLayout>
+                                    </local:Accordion.AccordionContentView>
+                                </local:Accordion>
+                                    </ScrollView>
+                                    <Grid BackgroundColor="Black" HeightRequest="1"/>
+                                    <ScrollView>
+
+                                    <local:Accordion  Title="In welchen Dateiformaten kann ich Screenshots hochladen?">
+
+                                    <local:Accordion.AccordionContentView>
+                                        <StackLayout>
+                                            <Label FontSize="16" Text="Sie können Screenshots in allen gängigen Dateiformaten hochladen (.png, .jpg, .jpeg etc.)" TextColor="Black"/>
+
+                                        </StackLayout>
+                                    </local:Accordion.AccordionContentView>
+                                </local:Accordion>
+                                    </ScrollView>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+
+                </pv:PancakeView>
+            </Grid>
+
+
+        </SwipeView>
+    </Grid>
+</ContentPage>

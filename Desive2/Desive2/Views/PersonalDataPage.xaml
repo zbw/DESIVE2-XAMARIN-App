@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.PersonalDataPage"             xmlns:vm="clr-namespace:Desive2.ViewModels" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Shell.NavBarIsVisible="False"
+              >
+    <ContentPage.BindingContext>
+        <vm:PersonalDataPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,40,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">White</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent"
+                   >
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItemView >
+                        <Grid>
+                            <StackLayout Spacing="20" Padding="35" WidthRequest="250" BindableLayout.ItemsSource="{Binding MyMenu}"
+                                         VerticalOptions="CenterAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CloseSwipe"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <pv:PancakeView  HeightRequest="30"
+                                                            WidthRequest="30" CornerRadius="15" VerticalOptions="Center"
+                                                            HorizontalOptions="Start">
+                                                <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+
+                                            </pv:PancakeView>
+                                            <Label Text="{Binding Name}" TextColor="Black" FontSize="15" FontAttributes="Bold"
+                                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <Grid x:Name="swipeContent">
+                <pv:PancakeView x:Name="pancake" BackgroundColor="White" >
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseSwipeGrid"/>
+                    </pv:PancakeView.GestureRecognizers>
+                    <Grid IsVisible="{Binding IsGridVisible}">
+                        <Image  Aspect="Fill" HorizontalOptions="Fill" VerticalOptions="Fill" Source="Poster_Swirl_bunt.png"/>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Padding="30,30,30,10" Grid.Row="0">
+                                <Image Source="menu.png" HeightRequest="30" HorizontalOptions="Start">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OpenSwipe"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenSettings}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            <Grid Grid.Row="1" BackgroundColor="Black">
+
+                            </Grid>
+
+
+                            <ScrollView  Grid.Row="3" >
+
+                                <StackLayout Orientation="Vertical" Padding="0" Spacing="0">
+                                    <StackLayout Padding="20,0,20,0">
+
+
+                                        <Label FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" Text="Um Ihre Aufwandsentschädigung zu erhalten, müssen Sie Ihren vollständigen Namen sowie Ihre IBAN angeben. Wenn Sie erfolgreich an der App-Studie teilgenommen haben, erhalten Sie nach Abschluss eine Überweisung auf das angegebene Konto."/>
+                                        <Label  FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" Text="Bitte haben Sie Verständnis dafür, dass es sich um eine IBAN unter Ihrem Namen handeln muss, mit der wir eine kostenlose SEPA-Überweisung aus Deutschland durchführen können."/>
+
+                                    </StackLayout>
+
+                                    <Grid>
+                                        <StackLayout  HorizontalOptions="Center" Spacing="5" IsVisible="{Binding AreElementsVisible}">
+
+
+
+                                            <Label Padding="0,20,0,0"
+                                                Text="Vollständiger Name"
+                                                FontAttributes="Bold"
+                                                TextColor="White"/>
+                                            <Entry
+
+                                                Text="{ Binding Name }"
+
+                                                WidthRequest="300"
+                                                IsPassword="False"
+                                                HorizontalOptions="Start"
+
+                                                TextColor="Black"/>
+
+
+                                            <Label
+                                                Text="IBAN"
+                                                FontAttributes="Bold"
+                                                TextColor="White"/>
+
+                                            <StackLayout Orientation="Horizontal">
+
+                                                <Entry
+                                                x:Name="MyEntry"
+
+                                                Text="{ Binding IBAN }"
+                                                TextColor="Black"
+                                                WidthRequest="300"
+                                                IsPassword="True"
+                                                HorizontalOptions="Start"
+                                                />
+                                                <ImageButton BackgroundColor="Transparent"
+                                                 WidthRequest="30"
+                                                 HeightRequest="30"
+                                                 HorizontalOptions="End"
+                                                 Source="eyeoff.png"
+                                                 Clicked="ImageButton_Clicked"/>
+                                            </StackLayout>
+
+                                            <Button
+                                                    Margin="10"
+                                                    Text="Hochladen"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    VerticalOptions="Center"
+                                                    BorderWidth="2"
+                                                    CornerRadius="15"
+                                                    WidthRequest="300"
+                                                    HeightRequest="60"
+                                                    TextColor="White"
+BorderColor="#397baf"
+
+                                                    Command="{ Binding UploadDataCommand }"
+                                                    />
+                                        </StackLayout>
+
+                                    </Grid>
+                                    <Label Padding="20,20,20,0" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" Text="Weitere Informationen zur Aufwandsentschädigung finden Sie in den FAQ auf unserer Website:"/>
+                                    <Label Padding="20,0,20,20" HorizontalOptions="Start" FontAttributes="Bold"   TextColor="Blue" TextDecorations="Underline" Text="https://desive2.org/index.php/faq/">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <StackLayout Padding="20,10,20,0">
+                                        <Grid HeightRequest="60"/>
+                                        <Grid HeightRequest="2"
+                                              BackgroundColor="Black" />
+                                        <Label  FontAttributes="Bold"
+                                                FontSize="20"
+                                                TextColor="White"
+                                                HorizontalOptions="Start"
+                                                Text="Studienteilnahme abbrechen: Account und Daten löschen"/>
+                                        <Label  TextColor="White"
+                                                HorizontalOptions="Center"
+                                                FontAttributes="Bold"
+                                                Text="Achtung: Diese Funktion benötigen Sie nur, wenn Sie Ihre Teilnahme an der Studie sofort abbrechen und Ihre Daten (App- und Interviewdaten) vorzeitig löschen lassen und diese nicht mehr zur wissenschaftlichen Auswertung zur Verfügung stellen möchten. Nach Beendigung der Studie werden Ihre personenbezogenen Daten ohnehin gelöscht." />
+
+                                        <Label  TextColor="White"
+                                                HorizontalOptions="Center"
+                                                Text="Wir möchten Sie darüber informieren, dass Ihre Teilnahme an unserer Studie freiwillig ist und dass ein Abbruch jederzeit ohne Angabe von Gründen möglich ist. Es entstehen keine negativen Folgen für Sie. Dafür können Sie die App einfach deinstallieren. Bei einem Anspruch auf eine Aufwandsentschädigung, werden wir Sie per E-Mail kontaktieren, um Ihnen diese Entschädigung zukommen zu lassen. Am Ende der Studie werden auch bei einer vollständigen und erfolgreichen Teilnahme alle personenbezogenen Daten gelöscht.
+"/>
+                                        <Label  TextColor="White"
+                                                HorizontalOptions="Center"
+                                                Text="Falls gewünscht, können Sie hier vorzeitig beantragen, all Ihre personenbezogenen Daten löschen zu lassen. Sie erhalten darüber eine Bestätigung via E-Mail. Bitte beachten Sie, dass in diesem Fall keine (weitere) Aufwandsentschädigung ausgezahlt werden kann, da hierfür personenbezogene Daten verarbeitet und gespeichert werden müssen.
+"/>
+                                        <Label  TextColor="White"
+                                                HorizontalOptions="Center"
+                                                Text="Wir legen großen Wert auf Datenschutz und verpflichten uns, Ihre persönlichen Informationen vertraulich zu behandeln und sie nur für wissenschaftliche Zwecke zu nutzen. Wenn Sie die vorzeitige Löschung all Ihrer Daten beantragen, können wir diese ggf. nicht mehr für unsere Forschung nutzen. Wenn Sie Fragen zur Studie haben oder weitere Informationen benötigen, können Sie uns jederzeit kontaktieren. Vielen Dank für Ihre Teilnahme!
+"/>
+                                    </StackLayout>
+                                    <StackLayout Padding="20,20,20,0"  Orientation="Horizontal">
+                                        <CheckBox x:Name="cbDelete" CheckedChanged="CheckBox_CheckedChanged"/>
+                                        <Label TextColor="White"
+                                               Text="Hiermit bestätige ich, dass ich meine Teilnahme an der Studie vorzeitig beenden möchte und beantrage die sofortige Löschung meines Accounts sowie meiner personenbezogenen Daten."/>
+                                    </StackLayout>
+                                    <Button Margin="20"
+                                        x:Name="btnDelete"
+                                                    Text="Account und Daten löschen"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    VerticalOptions="Center"
+                                                    BorderWidth="2"
+                                        BackgroundColor="White"
+                                            BorderColor="#397baf"
+                                                    CornerRadius="15"
+                                                    WidthRequest="300"
+                                                    HeightRequest="60"
+                                                    IsEnabled="False"
+                                                    Clicked="Button_Clicked"
+                                                    />
+
+                                </StackLayout>
+                            </ScrollView>
+                        </Grid>
+                    </Grid>
+                </pv:PancakeView>
+                <ActivityIndicator  AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            IsRunning="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                                    WidthRequest="100"
+                                HeightRequest="100"
+                            Color="Orange" VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+            </Grid>
+        </SwipeView>
+    </Grid>
+</ContentPage>

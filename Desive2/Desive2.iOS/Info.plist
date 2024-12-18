@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>9.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>Desive²</string>
+	<key>CFBundleIdentifier</key>
+	<string>de.zbw.desive2</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>CFBundleName</key>
+	<string>Desive2</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Picture Picker uses photo library</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>DESIVE² möchte dein Mikrofon verwenden, um Audios aufzunehmen.</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/DesiveIcons.appiconset</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>LaunchScreen</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.47</string>
+	<key>UNNotificationServiceExtensionPointIdentifier</key>
+	<string>com.apple.usernotifications.service</string>
+	<key>NSExtensionPrincipalClass</key>
+	<string>NotificationService</string>
+	<key>CleverPushAPNKey</key>
+	<string>HJ44AY2C8L</string>
+	<key>com.apple.developer.token-key-id</key>
+	<string>HJ44AY2C8L</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcons.appiconset</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>CFBundleVersion</key>
+	<string>47</string>
+</dict>
+</plist>

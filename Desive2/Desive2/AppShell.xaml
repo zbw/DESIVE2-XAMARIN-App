@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:vm="clr-namespace:Desive2.ViewModels"
+       mc:Ignorable="d"
+       FlyoutBehavior="Disabled"
+       xmlns:local="clr-namespace:Desive2.Views"
+       xmlns:first="clr-namespace:Desive2.Views.Surveys.FirstSurvey"
+      
+       xmlns:second="clr-namespace:Desive2.Views.Surveys.SecondSurvey"
+       xmlns:third="clr-namespace:Desive2.Views.Surveys.ThirdSurvey"
+       
+       xmlns:four="clr-namespace:Desive2.Views.Surveys.FirstSurvey.FourthSurvey"
+       xmlns:diary="clr-namespace:Desive2.Views.DiaryQuestions"
+       NavigationPage.HasNavigationBar="False"
+       Title="Desive²"
+       x:Class="Desive2.AppShell"
+       >
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+    
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                
+
+
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+    <ShellItem Route="LoginPage"
+               FlyoutItemIsVisible="False"
+               NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </ShellItem>
+    <ShellItem Route="DiaryMultipleWithEditor"
+               FlyoutItemIsVisible="False"
+               NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate diary:MultipleChoiceWithEditorPage}" />
+    </ShellItem>
+    <ShellItem Route="MatrixPage"
+               FlyoutItemIsVisible="False"
+               NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:MatrixPage}" />
+    </ShellItem>
+    <ShellItem Route="MultipleChoicePage"
+               FlyoutItemIsVisible="False"
+               NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:MultipleChoicePage}" />
+    </ShellItem>
+    <ShellItem Route="SingleChoicePage"
+               FlyoutItemIsVisible="False"
+               NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:SingleChoicePage}" />
+    </ShellItem>
+
+    
+    
+    <ShellItem Route="LicensePage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:LicensePage}"/>
+    </ShellItem>
+    <ShellItem Route="VoiceMailForDiary" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:VoiceMailForDiary}"/>
+    </ShellItem>
+    <ShellItem Route="MainPage" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+    </ShellItem>
+    <ShellItem Route="AboutPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:AboutPage}"/>
+    </ShellItem>
+    <ShellItem Route="VoiceMailPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:VoiceMailPage}"/>
+    </ShellItem>
+    <ShellItem Route="PictureUploadPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:PictureUploadPage}"/>
+    </ShellItem>
+
+    <ShellItem Route="UserAccountPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:UserAccountPage}"/>
+    </ShellItem>
+    <ShellItem Route="CreatePasswordPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:CreatePasswordPage}"/>
+    </ShellItem>
+    <ShellItem Route="StartSurveyPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:StartSurveyPage}"/>
+    </ShellItem>
+    
+    <ShellItem Route="DiaryPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:DiaryPage}"/>
+    </ShellItem>
+ 
+    <ShellItem Route="FirstSurveyHome" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate first:Home}"/>
+    </ShellItem>
+    
+    <ShellItem Route="FAQView" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:FAQView}"/>
+    </ShellItem>
+    <ShellItem Route="AdditionalInfosPage" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:AdditionalInfosPage}"/>
+    </ShellItem>
+
+    <ShellItem Route="SecondSurveyHome" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate second:Home}"/>
+    </ShellItem>
+   
+
+    <ShellItem Route="ThirdSurveyHome" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate third:Home}"/>
+    </ShellItem>
+    <ShellItem Route="PDFPage" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:PDFUploadPage}"/>
+    </ShellItem>
+
+    <ShellItem Route="FirstSurveyAbschnittOne" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate first:Abschnitt1}"/>
+    </ShellItem>
+    <ShellItem Route="FirstSurveyAbschnittTwo" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate first:Abschnitt2}"/>
+    </ShellItem>
+    <ShellItem Route="FirstSurveyAbschnittThree" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate first:Abschnitt3}"/>
+    </ShellItem>
+
+    <ShellItem Route="SecondSurveyAbschnittOne" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate second:Abschnitt1}"/>
+    </ShellItem>
+    <ShellItem Route="SecondSurveyAbschnittTwo" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate second:Abschnitt2}"/>
+    </ShellItem>
+    <ShellItem Route="SecondSurveyAbschnittThree" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate second:Abschnitt3}"/>
+    </ShellItem>
+
+    <ShellItem Route="ThirdSurveyAbschnittOne" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate third:Abschnitt1}"/>
+    </ShellItem>
+    <ShellItem Route="ThirdSurveyAbschnittTwo" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate third:Abschnitt2}"/>
+    </ShellItem>
+
+    <ShellItem Route="SelectProfilePicture" FlyoutItemIsVisible="True" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:SelectProfilePicturePage}"/>
+    </ShellItem>
+    
+    <ShellItem Route="SettingsPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:Settings}"/>
+    </ShellItem>
+    <ShellItem Route="PersonalDataPage" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate local:PersonalDataPage}"/>
+    </ShellItem>
+    
+
+    <ShellItem Route="DiarySingleChoice" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate diary:SingleChoicePage}"/>
+    </ShellItem>
+    <ShellItem Route="DiaryMultipleChoice" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate diary:MultipleChoicePage}"/>
+    </ShellItem>
+    
+    <ShellItem Route="DiaryQuestionEditor" FlyoutItemIsVisible="False" NavigationPage.HasNavigationBar="False">
+        <ShellContent ContentTemplate="{DataTemplate diary:Editor}"/>
+    </ShellItem>
+    <!--
+        If you would like to navigate to this content you can do so by calling
+        await Shell.Current.GoToAsync("//LoginPage");
+    
+    
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
+    </ShellItem>
+    -->
+
+
+
+
+
+</Shell>

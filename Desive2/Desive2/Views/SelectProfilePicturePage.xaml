@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.SelectProfilePicturePage"
+             xmlns:vm="clr-namespace:Desive2.ViewModels"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <vm:SelectPictureViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">White</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image  Source="transparentes_blaues_desive2_i.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="70"/>
+
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.5"/>
+
+
+
+        <Grid x:Name="swipeContent">
+            <pv:PancakeView x:Name="pancake" BackgroundColor="White" >
+               
+                <Grid IsVisible="{Binding IsGridVisible}">
+                    <Image  Aspect="Fill" HorizontalOptions="Fill" VerticalOptions="Fill" Source="Poster_Swirl_bunt.png"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Padding="30,30,30,10" Grid.Row="0">
+                            <Image Source="arrowBack.png" HeightRequest="30" HorizontalOptions="Start">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="{Binding ProfilePicture}" HeightRequest="36" HorizontalOptions="End">
+
+                            </Image>
+                        </Grid>
+                        <Grid Grid.Row="1" BackgroundColor="Black">
+
+                        </Grid>
+
+
+                        <ScrollView  Grid.Row="3" >
+
+                            <StackLayout Orientation="Vertical" Padding="0" Spacing="5">
+                            
+                                <Grid>
+                                    <StackLayout Padding="20">
+
+                                        <Label Text="Wählen Sie ein Avatar aus" TextColor="White" FontAttributes="Bold" FontSize="25"/>
+                                        <Grid Padding="10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="100"/>
+                                                <RowDefinition Height="100"/>
+                                                <RowDefinition Height="100"/>
+                                                <RowDefinition Height="100"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Row="0" Grid.Column="0" VerticalOptions="StartAndExpand" Source="female1.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectFirstPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="1" Grid.Column="0" VerticalOptions="StartAndExpand" Source="male1.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectSecondPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Source="female2.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectThirdPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="1" Grid.Column="1" VerticalOptions="StartAndExpand" Source="male2.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectFourthPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="1" Grid.Column="2" VerticalOptions="StartAndExpand" Source="female3.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectFifthPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="2" Grid.Column="2" VerticalOptions="StartAndExpand" Source="male3.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectSixthPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="0" Grid.Column="2" VerticalOptions="StartAndExpand" Source="female4.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectSeventhPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="2" Grid.Column="1" VerticalOptions="StartAndExpand" Source="male4.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectEigthPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image Grid.Row="2" Grid.Column="0" VerticalOptions="StartAndExpand" Source="neutral.png">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding SelectNinthPicture}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
+
+                                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsFirstCheckVisible}"/>
+                                            <Image Grid.Row="1" Grid.Column="0" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsSecondCheckVisible}"/>
+                                            <Image Grid.Row="0" Grid.Column="1" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsThirdCheckVisible}"/>
+                                            <Image Grid.Row="1" Grid.Column="1" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsFourthCheckVisible}"/>
+                                            
+                                            <Image Grid.Row="1" Grid.Column="2" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsFifthCheckVisible}"/>
+                                            <Image Grid.Row="2" Grid.Column="2" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsSixthCheckVisible}"/>
+                                            <Image Grid.Row="0" Grid.Column="2" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsSeventhCheckVisible}"/>
+                                            <Image Grid.Row="2" Grid.Column="1" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsEighthCheckVisible}"/>
+                                            <Image Grid.Row="2" Grid.Column="0" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="checkmark.png" IsVisible="{Binding IsNinthCheckVisible}"/>
+                                        </Grid>
+
+                                    </StackLayout>
+                                </Grid>
+
+                            </StackLayout>
+                        </ScrollView>
+                    </Grid>
+                </Grid>
+            </pv:PancakeView>
+            <ActivityIndicator  AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                            AbsoluteLayout.LayoutFlags="All" 
+                            IsRunning="{Binding IsBusy}" 
+                            IsVisible="{Binding IsBusy}" 
+                                    WidthRequest="100"
+                                HeightRequest="100"
+                            Color="Orange" VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desive2.Views.DiaryQuestions.Editor"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:Desive2.ViewModels.Diary"
+             Shell.NavBarIsVisible="False">
+        <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,40,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.BindingContext>
+        <vm:EditorViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image Aspect="AspectFill" Source="bg.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        <BoxView BackgroundColor="#A1A1A1" Opacity="0.9"/>
+        <SwipeView x:Name="MainSwipeView" BackgroundColor="Transparent">
+
+            <Grid x:Name="swipeContent">
+                <pv:PancakeView x:Name="pancake" BackgroundColor="White">
+                    <Grid>
+                        <Grid>
+
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="9*"/>
+                                <RowDefinition Height="Auto"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid Padding="30,30,30,10" Grid.Row="0">
+                                <Image Source="arrowBack.png" HeightRequest="36" HorizontalOptions="Start">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                            </Grid>
+                            <Grid Grid.Row="1" BackgroundColor="Black"/>
+
+                            <ScrollView Grid.Row="2" Padding="10">
+
+                                <StackLayout>
+
+
+                                    <Label Text="Zusätzliche Informationen" TextColor="Black" FontSize="Title" HorizontalOptions="Start"  />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1"/>
+                                            <RowDefinition Height="Auto"/>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="1">
+                                            <StackLayout>
+                                                <Grid >
+                                                    <Image Source="Feld_bunt.png"/>
+                                                    <StackLayout Padding="10"  >
+
+                                                        <Label TextColor="White"  FontSize="18" Text="Fällt Ihnen noch etwas zu Ihren geteilten Gesundheitsinformationen ein? Möchten Sie noch etwas hinzufügen?" x:Name="question1"/>
+                                                        
+                                                    </StackLayout>
+                                                </Grid>
+                                                <Editor  HeightRequest="130" Placeholder="Hier Text eingeben..." x:Name="editorText"/>
+
+                                                <StackLayout x:Name="AudioForDiary" IsVisible="{Binding IsAudioVisible }">
+
+
+
+                                                    <Label Text="Alternativ können Sie auch zusätzliche Informationen über eine Sprachnotiz mit uns teilen:"/>
+                                                    <Button Margin="0,10,0,0" Text="Sprachnotiz aufnehmen" 
+                                                            Command="{Binding SendSurveyCommand}" 
+                                                            Clicked="SendClicked"    
+                                                            BorderWidth="2"
+                                                            CornerRadius="25"
+                                                            WidthRequest="300" 
+                                                            TextColor="White" />
+
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </Grid>
+                                        <Grid Grid.Row="0" BackgroundColor="Black"/>
+                                    </Grid>
+                                    <Button Margin="0,10,0,0" Text="Antworten absenden" TextColor="White" BorderColor="#397baf" x:Name="btnUpload" IsEnabled="True" Clicked="Button_Clicked"
+                                            BorderWidth="2"
+                                            CornerRadius="25"
+                                            WidthRequest="300"/>
+                                </StackLayout>
+                            </ScrollView>
+
+                        </Grid>
+                    </Grid>
+                </pv:PancakeView>
+            </Grid>
+        </SwipeView>
+    </Grid>
+</ContentPage>
